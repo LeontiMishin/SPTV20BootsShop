@@ -64,9 +64,7 @@ public class App {
                 for (int i = 0; i < customers.size(); i++) {
                     if(customers.get(i) != null){
                         System.out.println(customers.get(i).toString());
-                }
-                        
-                        
+                }            
         }
                     
                     break;
