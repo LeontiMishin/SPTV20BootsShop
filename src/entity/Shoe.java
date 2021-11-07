@@ -10,17 +10,10 @@ package entity;
  * @author user
  */
 public class Shoe {
-    private String name;
     private String brand;
-    private int price;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String model;
+    private double size;
+    private double price;
 
     public String getBrand() {
         return brand;
@@ -30,20 +23,32 @@ public class Shoe {
         this.brand = brand;
     }
 
-    public int getPrice() {
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public void setSize(double Size) {
+        this.size = Size;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     
     @Override
     public String toString() {
-        return "Shoe{"
-                + "name=" + name
-                + ",\n brand=" + brand
-                + ",\n price=" + price
-                + "\n}";
+        return " Обувь: " + brand +" "+ model + ", размер: " + size + ", цена: " + price + " евро" + ' ';
     }
 }

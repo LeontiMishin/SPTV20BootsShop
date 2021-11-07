@@ -10,40 +10,46 @@ package entity;
  * @author user
  */
 public class Customer {
-    private String fName;
-    private String lName;
-    private int euro;
+    private String buyerFirstName;
+    private String buyerLastName;
+    private String buyerPhone;
+    private double buyerMoney;
 
-    public String getFname() {
-        return fName;
+    public String getBuyerFirstName() {
+        return buyerFirstName;
     }
 
-    public void setFname(String fName) {
-        this.fName = fName;
+    public void setBuyerFirstName(String buyerFirstName) {
+        this.buyerFirstName = buyerFirstName;
     }
 
-    public String getLname() {
-        return lName;
+    public String getBuyerLastName() {
+        return buyerLastName;
     }
 
-    public void setLname(String lName) {
-        this.lName = lName;
+    public void setBuyerLastName(String buyerLastName) {
+        this.buyerLastName = buyerLastName;
     }
 
-    public int getFunds() {
-        return euro;
+    public String getBuyerPhone() {
+        return buyerPhone;
     }
 
-    public void setFunds(int funds) {
-        this.euro = funds;
+
+    public void setBuyerPhone(String buyerPhone) {
+        this.buyerPhone = buyerPhone;
+    }
+
+    public double getBuyerMoney() {
+        return buyerMoney;
+    }
+
+    public void setBuyerMoney(double buyerMoney) {
+        this.buyerMoney = buyerMoney;
     }
     @Override
     public String toString() {
-        return "Customer{"
-                + "First name=" + fName
-                + ",\n Last name=" + lName
-                + ",\n Euro=" + euro
-                + "\n}";
+        return "покупатель: " + buyerFirstName +" "+ buyerLastName + ", Tel.: " + buyerPhone + ", кол. денег: " + buyerMoney +" евро"+' ';
     }
     
 }

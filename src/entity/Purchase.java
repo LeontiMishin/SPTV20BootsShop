@@ -13,8 +13,8 @@ import java.util.Date;
 public class Purchase {
     private Shoe shoe;
     private Customer customer;
-    private Date purchaseDate;
-    private int cost;
+    private Date givenShoe;
+    private double generalMoney;
 
     public Shoe getShoe() {
         return shoe;
@@ -32,20 +32,21 @@ public class Purchase {
         this.customer = customer;
     }
 
-    public Date getPurchaseDate() {
-        return purchaseDate;
+
+    public Date getGivenShoe() {
+        return givenShoe;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public void setGivenShoe(Date givenShoe) {
+        this.givenShoe = givenShoe;
     }
 
-    public int getCost() {
-        return cost;
+    public double getGeneralMoney() {
+        return generalMoney;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setGeneralMoney(double generalMoney) {
+        this.generalMoney = generalMoney;
     }
     
     
