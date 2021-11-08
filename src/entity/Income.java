@@ -9,7 +9,7 @@ package entity;
  *
  * @author user
  */
-public class Money {
+public class Income {
     private double generalMoney;
 
     public double getGeneralMoney() {

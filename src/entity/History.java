@@ -9,36 +9,36 @@ import java.util.Date;
 
 /**
  *
- * @author Leonti
+ * @author user
  */
 public class History {
-    private Sneaker sneaker;
-    private Buyer buyer;
-    private Date givenSneaker;
+    private Shoe shoe;
+    private Customer customer;
+    private Date givenShoe;
     private double generalMoney;
     
-    public Sneaker getSneaker() {
-        return sneaker;
+    public Shoe getSneaker() {
+        return shoe;
     }
 
-    public void setSneaker(Sneaker sneaker) {
-        this.sneaker = sneaker;
+    public void setShoe(Shoe shoe) {
+        this.shoe = shoe;
     }
 
-    public Buyer getBuyer() {
-        return buyer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
+    public void setBuyer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Date getGivenSneaker() {
-        return givenSneaker;
+    public Date getGivenShoe() {
+        return givenShoe;
     }
 
-    public void setGivenSneaker(Date givenSneaker) {
-        this.givenSneaker = givenSneaker;
+    public void setGivenShoe(Date givenShoe) {
+        this.givenShoe = givenShoe;
     }
 
 }
