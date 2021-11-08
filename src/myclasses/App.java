@@ -8,7 +8,6 @@ package myclasses;
 import entity.Customer;
 import entity.History;
 import entity.Income;
-import entity.Money;
 import entity.Purchase;
 import entity.Shoe;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
+import tools.SaverToFiles;
 
 /**
  *
@@ -27,8 +27,15 @@ public class App {
     List<Customer> customers = new ArrayList<>();
     List<Purchase> purchases = new ArrayList<>();
     List<History> histories= new ArrayList<>();
-    List<Money> moneys= new ArrayList<>();
     Income income = new Income();
+    SaverToFiles saverToFiles = new SaverToFiles();
+    
+    public App(){
+        shoes = saverToFiles.loadShoeses();
+        customers = saverToFiles.loadCustomers();
+//        purchases = saverToFiles.loadPurchases();
+    }
+    
     public void run() {
         int exit=0;
         do{
@@ -66,7 +73,7 @@ public class App {
                 case 6:
                     income();
                     break;
-               case 7:
+                case 7:
                    addMoney();
                    break;
                default:
@@ -90,6 +97,8 @@ public class App {
             shoe.setPrice(scanner.nextDouble()); scanner.nextLine();
             System.out.println("Добавлена"+shoe.toString());
             shoes.add(shoe);
+            saverToFiles.saveShoeses(shoes);
+            
         }
         
         private void addCustomer(){
@@ -105,6 +114,7 @@ public class App {
             customer.setBuyerMoney(scanner.nextDouble()); scanner.nextLine();
             System.out.println("Добавлен "+customer.toString());
             customers.add(customer);
+            saverToFiles.saveCustomers(customers);
         }
 
     private void listModel() {

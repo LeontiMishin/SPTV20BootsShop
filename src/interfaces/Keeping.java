@@ -5,19 +5,20 @@
  */
 package interfaces;
 
-import entity.Purchase;
 import entity.Customer;
+import entity.Purchase;
 import java.util.List;
+import entity.Shoe;
+
 /**
  *
- * @author user
+ * @author Leonti
  */
 public interface Keeping {
-    public void saveModels(List<Model> costomers);
-    public List<Model> loadModel();
-    public void saveCostomers(List<Model> costomers);
-    public List<Customer> loadReaders();
-    public void saveHistories(List<Purchase> purchases);
-    public List<Purchase> loadPurchases();
-    
+    public void saveShoeses(List<Shoe> shoeses);
+    public List<Shoe> loadShoeses();
+    public void saveCustomers(List<Customer> customers);
+    public List<Customer> loadCustomers();
+//    public void savePurchases(List<Purchase> purchases);
+//    public List<Purchase> loadPurchases();
 }

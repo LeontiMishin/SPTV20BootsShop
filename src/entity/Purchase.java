@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package entity;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author user
  */
-public class Purchase {
+public class Purchase implements Serializable {
     private Shoe shoe;
     private Customer customer;
     private Date givenShoe;
