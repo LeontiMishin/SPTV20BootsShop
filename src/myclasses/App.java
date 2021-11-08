@@ -8,6 +8,7 @@ package myclasses;
 import entity.Customer;
 import entity.History;
 import entity.Income;
+import entity.Money;
 import entity.Purchase;
 import entity.Shoe;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class App {
     List<Customer> customers = new ArrayList<>();
     List<Purchase> purchases = new ArrayList<>();
     List<History> histories= new ArrayList<>();
+    List<Money> moneys= new ArrayList<>();
     Income income = new Income();
     public void run() {
         int exit=0;
@@ -38,6 +40,7 @@ public class App {
             System.out.println("4: Список зарегистрированных покупателей");
             System.out.println("5: Покупка обуви");
             System.out.println("6: Доход магазина за все время работы");
+            System.out.println("7: Добавить денег покупателю");
             
             int menu = scanner.nextInt();
             scanner.nextLine();
@@ -63,6 +66,11 @@ public class App {
                 case 6:
                     income();
                     break;
+               case 7:
+                   addMoney();
+                   break;
+               default:
+                   System.out.println("Выберите номер из списка!");
             }
             
             }while(exit==0);
@@ -146,6 +154,7 @@ public class App {
         System.out.print("Выберите нужную модель обуви: ");
         int shoeNum= scanner.nextInt(); scanner.nextLine();
         buyerList();
+        System.out.println();
         System.out.print("Выберите нужного покупателя: ");
         int customerNum= scanner.nextInt(); scanner.nextLine();
         History history = new History();
@@ -175,5 +184,14 @@ public class App {
         System.out.println("Доход магазина");
         System.out.printf("Выручка магазина: %.2f%n",income.getGeneralMoney());
     }
+
+    private void addMoney() {
+    System.out.println("Добавить денег ");
+    buyerList();
+    System.out.print("Выберите нужного покупателя: ");
+    int choice= scanner.nextInt(); scanner.nextLine();
+    System.out.print("Введите сколько денег вы хотите добавить этому покупателю: ");
+    int add= scanner.nextInt(); scanner.nextLine();
+    customers.get(choice-1).setBuyerMoney(customers.get(choice-1).getBuyerMoney()+add);
+    }
 }
- 
