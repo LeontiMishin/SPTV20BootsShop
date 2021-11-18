@@ -64,7 +64,6 @@ public class Shoe implements Serializable{
         hash = 13 * hash + Objects.hashCode(this.Shoe);
         hash = (int) (13 * hash + this.size);
         hash = (int) (13 * hash + this.price);
-        hash =  13 * hash + this.model;
         return hash;
     }
 

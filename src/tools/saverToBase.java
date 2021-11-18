@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import interfaces.Keeping;
 
 /**
  *
@@ -25,28 +26,28 @@ public class saverToBase {
     private EntityTransaction tx = em.getTransaction();
 
     @Override
-    public void saveBooks(List<Shoe> books) {
+    public void saveShoes(List<Shoe> shoes) {
         tx.begin();
-            for (int i = 0; i < books.size(); i++) {
-                if(books.get(i).getId() == null){
-                    em.persist(books.get(i));
+            for (int i = 0; i < shoes.size(); i++) {
+                if(shoes.get(i).getId() == null){
+                    em.persist(shoes.get(i));
                 }else{
-                    em.merge(books.get(i));
+                    em.merge(shoes.get(i));
                 }
             }
         tx.commit();
     }
 
     @Override
-    public List<Shoe> loadBooks() {
-        List<Shoe> books = null;
+    public List<Shoe> loadShoes() {
+        List<Shoe> shoes = null;
         try {
-            books = em.createQuery("SELECT book FROM Book book")
+            shoes = em.createQuery("SELECT book FROM Book book")
                 .getResultList();
         } catch (Exception e) {
-            books = new ArrayList<>();
+            shoes = new ArrayList<>();
         }
-        return books;
+        return shoes;
     }
 
     @Override

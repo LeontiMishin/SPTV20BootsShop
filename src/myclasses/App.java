@@ -116,7 +116,7 @@ public class App {
             customer.setBuyerMoney(scanner.nextDouble()); scanner.nextLine();
             System.out.println("Добавлен "+customer.toString());
             customers.add(customer);
-            saverToFiles.saveCustomers(customers);
+            keeper.saveCustomers(customers);
         }
 
     private void listModel() {
