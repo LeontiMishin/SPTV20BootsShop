@@ -50,6 +50,8 @@ public class App {
             System.out.println("5: Покупка обуви");
             System.out.println("6: Доход магазина за все время работы");
             System.out.println("7: Добавить денег покупателю");
+            System.out.println("8: Редактировать товар");
+            System.out.println("9: Редактировать покупателя");
             
             int menu = scanner.nextInt();
             scanner.nextLine();
@@ -78,6 +80,12 @@ public class App {
                 case 7:
                    addMoney();
                    break;
+                case 8:
+                    changeShoe();
+                    break;
+                case 9:
+                    changeCustomer();
+                    break;
                default:
                    System.out.println("Выберите номер из списка!");
             }
@@ -205,5 +213,13 @@ public class App {
     System.out.print("Введите сколько денег вы хотите добавить этому покупателю: ");
     int add= scanner.nextInt(); scanner.nextLine();
     customers.get(choice-1).setBuyerMoney(customers.get(choice-1).getBuyerMoney()+add);
+    }
+
+    private void changeShoe() {
+        
+    }
+
+    private void changeCustomer() {
+        
     }
 }
