@@ -10,6 +10,7 @@ import entity.History;
 import entity.Income;
 import entity.Purchase;
 import entity.Shoe;
+import interfaces.Keeping;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -29,6 +30,7 @@ public class App {
     List<History> histories= new ArrayList<>();
     Income income = new Income();
     SaverToFiles saverToFiles = new SaverToFiles();
+    private Keeping keeper;
     
     public App(){
         shoes = saverToFiles.loadShoeses();
@@ -97,7 +99,7 @@ public class App {
             shoe.setPrice(scanner.nextDouble()); scanner.nextLine();
             System.out.println("Добавлена"+shoe.toString());
             shoes.add(shoe);
-            saverToFiles.saveShoeses(shoes);
+            keeper.saveShoeses(shoes);
             
         }
         
