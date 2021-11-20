@@ -6,6 +6,7 @@
 package interfaces;
 
 import entity.Customer;
+import entity.History;
 import entity.Purchase;
 import java.util.List;
 import entity.Shoe;
@@ -19,6 +20,8 @@ public interface Keeping {
     public List<Shoe> loadShoeses();
     public void saveCustomers(List<Customer> customers);
     public List<Customer> loadCustomers();
+    public void saveHistories (List<History> histories);
+    public List<History> loadHistories();
 //    public void savePurchases(List<Purchase> purchases);
 //    public List<Purchase> loadPurchases();
 }

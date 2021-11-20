@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
  *
  * @author user
  */
+@Entity
 public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +61,7 @@ public class Customer implements Serializable {
     public String toString() {
         return "покупатель: " + buyerFirstName +" "+ buyerLastName + ", Tel.: " + buyerPhone + ", кол. денег: " + buyerMoney +" евро"+' ';
     }
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 

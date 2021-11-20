@@ -17,25 +17,33 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
 import tools.SaverToFiles;
+import tools.SaverToBase;
 
 /**
  *
  * @author Leonti
  */
 public class App {
-    Scanner scanner = new Scanner(System.in);
-    List<Shoe> shoes = new ArrayList<>();
-    List<Customer> customers = new ArrayList<>();
-    List<Purchase> purchases = new ArrayList<>();
-    List<History> histories= new ArrayList<>();
+    public static boolean toFile = false;
+    private Scanner scanner = new Scanner(System.in);
+    private List<Shoe> shoes = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
+    private List<Purchase> purchases = new ArrayList<>();
+    private List<History> histories= new ArrayList<>();
     Income income = new Income();
-    SaverToFiles saverToFiles = new SaverToFiles();
-    private Keeping keeper;
+    private Keeping keeper = new SaverToBase();
     
     public App(){
-        shoes = saverToFiles.loadShoeses();
-        customers = saverToFiles.loadCustomers();
-//        purchases = saverToFiles.loadPurchases();
+                if (toFile) {
+            keeper = new SaverToFiles();
+        }else{
+            keeper = (Keeping) new SaverToBase();
+        }
+            
+        shoes = keeper.loadShoeses();
+        customers = keeper.loadCustomers();
+        histories = keeper.loadHistories();
+        
     }
     
     public void run() {

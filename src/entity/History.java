@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ import javax.persistence.TemporalType;
  *
  * @author user
  */
+@Entity
 public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
