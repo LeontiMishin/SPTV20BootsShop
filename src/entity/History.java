@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import javax.persistence.TemporalType;
  * @author user
  */
 @Entity
-public class History {
+public class History implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -70,6 +71,7 @@ public class History {
     public void setGeneralMoney(double generalMoney) {
         this.generalMoney = generalMoney;
     }
+
 
 }
 

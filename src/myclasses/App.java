@@ -34,10 +34,10 @@ public class App {
     private Keeping keeper = new SaverToBase();
     
     public App(){
-                if (toFile) {
+        if (toFile) {
             keeper = new SaverToFiles();
         }else{
-            keeper = (Keeping) new SaverToBase();
+            keeper = new SaverToBase();
         }
             
         shoes = keeper.loadShoeses();
@@ -151,7 +151,7 @@ public class App {
             }
         }  
         if(n<1){
-            System.out.println("Кроссовок нет!");
+            System.out.println( "Кроссовок нет!");
         }
     }      
 

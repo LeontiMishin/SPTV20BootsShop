@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,11 +21,11 @@ import javax.persistence.Id;
 public class Shoe implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Shoe;
+//    private String Shoe;
     private Long id;
-//    @OneToOne
     private String brand;
     private String model;
+    @OneToOne
     private double size;
     private double price;
 
@@ -60,49 +60,51 @@ public class Shoe implements Serializable{
     public void setPrice(double price) {
         this.price = price;
     }
-//        @Override
-//    public int hashCode() {
-//        int hash = 5;
-//        hash = 13 * hash + Objects.hashCode(this.Shoe);
-//        hash = (int) (13 * hash + this.size);
-//        hash = (int) (13 * hash + this.price);
-//        return hash;
-//    }
-
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        final Shoe other = (Shoe) obj;
-//        if (Double.doubleToLongBits(this.size) != Double.doubleToLongBits(other.size)) {
-//            return false;
-//        }
-//        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
-//            return false;
-//        }
-//        if (!Objects.equals(this.Shoe, other.Shoe)) {
-//            return false;
-//        }
-//        if (!Objects.equals(this.brand, other.brand)) {
-//            return false;
-//        }
-//        if (!Objects.equals(this.model, other.model)) {
-//            return false;
-//        }
-//        return true;
-//    }
     
     @Override
     public String toString() {
         return " Обувь: " + brand +" "+ model + ", размер: " + size + ", цена: " + price + " евро" + ' ';
     }
+    
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 13 * hash + Objects.hashCode(this.brand);
+        hash = 13 * hash + Objects.hashCode(this.model);
+        hash = (int) (13 * hash + this.size);
+        hash = (int) (13 * hash + this.price);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Shoe other = (Shoe) obj;
+        if (Double.doubleToLongBits(this.size) != Double.doubleToLongBits(other.size)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     public Long getId() {
         return id;
     }

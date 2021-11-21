@@ -7,6 +7,7 @@ package tools;
 import entity.Shoe;
 import entity.Purchase;
 import entity.Customer;
+import entity.History;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -128,5 +129,15 @@ public class SaverToFiles implements Keeping {
 //        }
 //        return purchases;
 //    }
+
+    @Override
+    public void saveHistories(List<History> histories) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<History> loadHistories() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
