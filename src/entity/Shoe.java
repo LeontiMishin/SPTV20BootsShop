@@ -21,13 +21,12 @@ import javax.persistence.OneToOne;
 public class Shoe implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private String Shoe;
     private Long id;
     private String brand;
     private String model;
     @OneToOne
-    private double size;
-    private double price;
+    private int size;
+    private int price;
 
     public String getBrand() {
         return brand;
@@ -45,19 +44,19 @@ public class Shoe implements Serializable{
         this.model = model;
     }
 
-    public double getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(double Size) {
+    public void setSize(int Size) {
         this.size = Size;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     
@@ -72,8 +71,8 @@ public class Shoe implements Serializable{
         int hash = 5;
         hash = 13 * hash + Objects.hashCode(this.brand);
         hash = 13 * hash + Objects.hashCode(this.model);
-        hash = (int) (13 * hash + this.size);
-        hash = (int) (13 * hash + this.price);
+        hash = 13 * hash + this.size;
+        hash = 13 * hash + this.price;
         return hash;
     }
 
@@ -89,10 +88,10 @@ public class Shoe implements Serializable{
             return false;
         }
         final Shoe other = (Shoe) obj;
-        if (Double.doubleToLongBits(this.size) != Double.doubleToLongBits(other.size)) {
+        if (this.size != other.size) {
             return false;
         }
-        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
+        if (this.price != other.price) {
             return false;
         }
         if (!Objects.equals(this.brand, other.brand)) {
@@ -103,6 +102,7 @@ public class Shoe implements Serializable{
         }
         return true;
     }
+
     
     
     public Long getId() {

@@ -30,7 +30,7 @@ public class History implements Serializable{
     private Customer customer;
     @Temporal(TemporalType.TIMESTAMP)
     private Date givenShoe;
-    @Temporal(TemporalType.TIMESTAMP)
+    @OneToOne
     private double generalMoney;
     
     public Shoe getSneaker() {
