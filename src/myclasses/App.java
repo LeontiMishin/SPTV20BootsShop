@@ -226,96 +226,106 @@ public class App {
     }
 
     private void changeShoe() {
-        /**
-         * 1. Выводим список книг
-         * 2. Посим пользователя указать книгу
-         * 3. Выводим название книги
-         * 4. Спрашиваем пользователя изменять или нет
-         * 5. Просим пользователя ввести новое название
-         *      Повторить с третьего пункта по пятый с каждым полем book
-         */
-        Set<Integer> changeNumber = new HashSet<>();
-        changeNumber.add(1);
-        changeNumber.add(2);
-        Set<Integer> setNumbersBooks = printListBooks();
-        if(setNumbersBooks.isEmpty()){
-            System.out.println("В базе нет книг");
-            return;
-        }
-        System.out.println("Выберите номер книги: ");
-        int numberBook = insertNumber(setNumbersBooks);
-        System.out.println("Название книги: "+books.get(numberBook - 1).getBookName());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        int change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новое название книги: ");
-            books.get(numberBook - 1).setBookName(scanner.nextLine());
-        }
-        System.out.println("Год издания книги: "+books.get(numberBook - 1).getReleaseYear());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новый год издания книги: ");
-            books.get(numberBook - 1).setReleaseYear(getNumber());
-        }
-        System.out.println("Количество экземпляров книги: "+books.get(numberBook - 1).getQuantity());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новое количество экземпляров книги: ");
-            int newQuantity = getNumber();
-            int oldQuantity = books.get(numberBook - 1).getQuantity();
-            int oldCount = books.get(numberBook - 1).getCount();
-            int newCount = oldCount + (newQuantity - oldQuantity);
-            books.get(numberBook - 1).setQuantity(newQuantity);
-            books.get(numberBook - 1).setCount(newCount);
-        }
-        Set<Integer> setNumbersAuthors = printListAuthors();
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите количество авторов: ");
-            int countAuthors = getNumber();
-            books.get(numberBook - 1).getAuthors().clear();
-            for (int i = 0; i < countAuthors; i++) {
-                System.out.println("Введите номер "+(i+1)+" автора из списка: ");
-                int numberAuthor = insertNumber(setNumbersAuthors);
-                books.get(numberBook - 1).getAuthors().add(authors.get(numberAuthor - 1));
-            }
-        }
-        keeper.saveBooks(books);
+//                System.out.println("----- Список обуви -----");
+//        int n=0;
+//        for (int i = 0;i < shoes.size(); i++) {
+//            if (shoes.get(i)!=null
+//                    && shoes.get(i).getQuantity()>0) {
+//                System.out.printf("%d Брэнд: %s, Название: %s, Размер: %d, Цена: %d, В наличии: %d.%n"
+//                ,i+1
+//                ,shoes.get(i).getBrand()
+//                ,shoes.get(i).getName()
+//                ,shoes.get(i).getSize()
+//                ,shoes.get(i).getPrice()
+//                ,shoes.get(i).getQuantity()
+//                );
+//            }
+//            n++;
+//        }
+//    if (n<1) {
+//        System.out.println("Нет обуви в наличии.");
+//        return;
+//    }
+//        System.out.print("Выберите номер обуви: ");
+//        int numberModel= getNumber();
+//        String repeat="yes";
+//        do{
+//            System.out.println("0. Выход");
+//            System.out.println("1. Изменить брэнд обуви");
+//            System.out.println("2. Изменить название модели");
+//            System.out.println("3. Изменить размер модели");
+//            System.out.println("4. Изменить цену модели");
+//            System.out.println("5. Изменить количество экземпляров");
+//            System.out.println("Выберите номер параметра, который хотите изменить: ");
+//            int num=getNumber();
+//            switch(num){
+//                case 0:
+//                    repeat="no";
+//                    break;
+//                case 1:
+//                    System.out.print("Введите новый брэнд обуви: ");
+//                    String newBrand=scanner.nextLine();
+//                    models.get(numberModel-1).setBrand(newBrand);
+//                    saverToFiles.saveModels(models);
+//                    break;
+//                case 2:
+//                    System.out.print("Введите новое название модели: ");
+//                    String newName=scanner.nextLine();
+//                    models.get(numberModel-1).setName(newName);
+//                    saverToFiles.saveModels(models);
+//                    break;
+//                case 3:
+//                    System.out.print("Введите новый размер модели: ");
+//                    int newSize=getNumber();
+//                    models.get(numberModel-1).setSize(newSize);
+//                    saverToFiles.saveModels(models);
+//                    break;
+//                case 4:
+//                    System.out.print("Введите новую цену модели: ");
+//                    int newPrice=getNumber();
+//                    models.get(numberModel-1).setPrice(newPrice);
+//                    saverToFiles.saveModels(models);
+//                    break;
+//                case 5:
+//                    System.out.print("Введите новое количество экземпляров: ");
+//                    int newQuantity=getNumber();
+//                    models.get(numberModel-1).setQuantity(newQuantity);
+//                    saverToFiles.saveModels(models);
+//                    break;
+//            }
+//         }while("yes".equals(repeat));
     }
-
+//
     private void changeCustomer() {
-        Set<Integer> changeNumber = new HashSet<>();
-        changeNumber.add(1);
-        changeNumber.add(2);
-        Set<Integer> setNumbersReaders = printListReaders();
-        if(setNumbersReaders.isEmpty()){
-            return;
-        }
-        System.out.println("Выберите номер читателя: ");
-        int numberReader = insertNumber(setNumbersReaders);
-        System.out.println("Имя читателя: "+readers.get(numberReader - 1).getFirstname());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        int change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новое имя читателя: ");
-            readers.get(numberReader - 1).setFirstname(scanner.nextLine());
-        }
-        System.out.println("Фамилия читателя: "+readers.get(numberReader - 1).getLastname());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новую фамилию читателя: ");
-            readers.get(numberReader - 1).setLastname(scanner.nextLine());
-        }
-        System.out.println("Телефон читателя: "+readers.get(numberReader - 1).getPhone());
-        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
-        change = insertNumber(changeNumber);
-        if(1 == change){
-            System.out.println("Введите новый телефон читателя: ");
-            readers.get(numberReader - 1).setPhone(scanner.nextLine());
-        }
+//        Set<Integer> changeNumber = new HashSet<>();
+//        changeNumber.add(1);
+//        changeNumber.add(2);
+//        Set<Integer> setNumbersReaders = printListReaders();
+//        if(setNumbersReaders.isEmpty()){
+//            return;
+//        }
+//        System.out.println("Выберите номер читателя: ");
+//        int numberReader = insertNumber(setNumbersReaders);
+//        System.out.println("Имя читателя: "+customers.get(numberReader - 1).getFirstname());
+//        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
+//        int change = insertNumber(changeNumber);
+//        if(1 == change){
+//            System.out.println("Введите новое имя читателя: ");
+//            customers.get(numberReader - 1).setFirstname(scanner.nextLine());
+//        }
+//        System.out.println("Фамилия читателя: "+customers.get(numberReader - 1).getLastname());
+//        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
+//        change = insertNumber(changeNumber);
+//        if(1 == change){
+//            System.out.println("Введите новую фамилию читателя: ");
+//            customers.get(numberReader - 1).setLastname(scanner.nextLine());
+//        }
+//        System.out.println("Телефон читателя: "+customers.get(numberReader - 1).getPhone());
+//        System.out.println("Для изменения введите 1, чтобы пропустить нажмите 2");
+//        change = insertNumber(changeNumber);
+//        if(1 == change){
+//            System.out.println("Введите новый телефон читателя: ");
+//            customers.get(numberReader - 1).setPhone(scanner.nextLine());
+//        }
     }
 }

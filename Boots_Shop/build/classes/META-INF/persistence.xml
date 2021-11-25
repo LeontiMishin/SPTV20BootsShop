@@ -2,9 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="BootsShopPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>entity.Customer</class>
     <class>entity.History</class>
-    <class>entity.Shoe</class>
+    <class>entity.Model</class>
+    <class>entity.Shop</class>
+    <class>entity.User</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/webbooksshop?useUnicode=true&amp;characterEncoding=utf8"/>
       <property name="javax.persistence.jdbc.user" value="webbooksshop"/>
