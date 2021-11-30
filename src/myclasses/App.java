@@ -13,6 +13,7 @@ import entity.Shoe;
 import interfaces.Keeping;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
@@ -208,7 +209,7 @@ public class App {
         }else{
             System.out.println("Не хватает денег!");
         }
-    }  
+    }
 
     private void income() {
         double income=0;
@@ -217,10 +218,10 @@ public class App {
         System.out.print("Введите номер месяца, за который хотите посмотреть доход: ");
         int chosenMonth=getNumber()-1;
         for (int i = 0; i < histories.size(); i++) {
-            Date date=histories.get(i).getPurchaseModel();
+            Shoe date=histories.get(i).getSneaker();
             boolean toSum= summator(date,chosenMonth,years);
             if (histories.get(i)!=null & toSum){
-                income+=histories.get(i).getModel().getPrice();
+                income+=histories.get(i).getSneaker().getPrice();
             }
         }
         System.out.println("----- Доход за введенный месяц -----");
@@ -240,16 +241,16 @@ public class App {
     private void changeShoe() {
 System.out.println("----- Список обуви -----");
         int n=0;
-        for (int i = 0;i < models.size(); i++) {
-            if (models.get(i)!=null
-                    && models.get(i).getQuantity()>0) {
+        for (int i = 0;i < shoes.size(); i++) {
+            if (shoes.get(i)!=null
+                    && shoes.get(i).getQuantity()>0) {
                 System.out.printf("%d Брэнд: %s, Название: %s, Размер: %d, Цена: %d, В наличии: %d.%n"
                 ,i+1
-                ,models.get(i).getBrand()
-                ,models.get(i).getName()
-                ,models.get(i).getSize()
-                ,models.get(i).getPrice()
-                ,models.get(i).getQuantity()
+                ,shoes.get(i).getBrand()
+                ,shoes.get(i).getModel()
+                ,shoes.get(i).getSize()
+                ,shoes.get(i).getPrice()
+                ,shoes.get(i).getQuantity()
                 );
             }
             n++;
@@ -277,31 +278,31 @@ System.out.println("----- Список обуви -----");
                 case 1:
                     System.out.print("Введите новый брэнд обуви: ");
                     String newBrand=scanner.nextLine();
-                    purchases.get(numberModel-1).setShoe(newBrand);
+                    shoes.get(numberModel-1).setBrand(newBrand);
                     saverToFiles.saveModels(purchases);
                     break;
                 case 2:
                     System.out.print("Введите новое название модели: ");
                     String newName=scanner.nextLine();
-                    purchases.get(numberModel-1).setName(newName);
+                    shoes.get(numberModel-1).setModel(newName);
                     saverToFiles.saveModels(purchases);
                     break;
                 case 3:
                     System.out.print("Введите новый размер модели: ");
                     int newSize=getNumber();
-                    purchases.get(numberModel-1).setSize(newSize);
-                    saverToFiles.saveModels(purchases);
+                    shoes.get(numberModel-1).setSize(newSize);
+                    SaverToFiles.saveShoes(shoes);
                     break;
                 case 4:
                     System.out.print("Введите новую цену модели: ");
                     int newPrice=getNumber();
-                    purchases.get(numberModel-1).setPrice(newPrice);
+                    shoes.get(numberModel-1).setPrice(newPrice);
                     saverToFiles.saveModels(purchases);
                     break;
                 case 5:
                     System.out.print("Введите новое количество экземпляров: ");
                     int newQuantity=getNumber();
-                    purchases.get(numberModel-1).setQuantity(newQuantity);
+                    shoes.get(numberModel-1).setId(newQuantity);
                     saverToFiles.saveModels(purchases);
                     break;
             }
@@ -315,10 +316,10 @@ System.out.println("----- Список пользователей -----");
             if (customers.get(i)!=null) {
                 System.out.printf("%d Имя: %s, Фамилия: %s, Номер телефона: %s, Кол-во денег: %d.%n"
                 ,i+1
-                ,customers.get(i).getName()
-                ,customers.get(i).getSurname()
-                ,customers.get(i).getTel()
-                ,customers.get(i).getAmountMoney()
+                ,customers.get(i).getBuyerFirstName()
+                ,customers.get(i).getBuyerLastName()
+                ,customers.get(i).getBuyerPhone()
+                ,customers.get(i).getBuyerMoney()
                 );
             }
             n++;
@@ -344,19 +345,19 @@ System.out.println("----- Список пользователей -----");
                 case 1:
                     System.out.print("Введите новое имя пользователя: ");
                     String newName=scanner.nextLine();
-                    customers.get(numberUser-1).setName(newName);
+                    customers.get(numberUser-1).setBuyerFirstName(newName);
                     saverToFiles.saveUsers(users);
                     break;
                 case 2:
                     System.out.print("Введите новую фамилию пользователя: ");
                     String newSurname=scanner.nextLine();
-                    customers.get(numberUser-1).setSurname(newSurname);
+                    customers.get(numberUser-1).setBuyerLastName(newSurname);
                     saverToFiles.saveUsers(customers);
                     break;
                 case 3:
                     System.out.print("Введите новый номер пользователя: ");
                     String newTel=scanner.nextLine();
-                    customers.get(numberUser-1).setTel(newTel);
+                    customers.get(numberUser-1).setBuyerPhone(newTel);
                     saverToFiles.saveUsers(customers);
                     break;
             }
