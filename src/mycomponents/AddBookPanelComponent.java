@@ -28,6 +28,27 @@ public class AddBookPanelComponent extends JPanel{
     private EditComponent quantityComponentTabAddBook;
     private ButtonComponent buttonComponentTabAddBook;
     
+     private void initComponents() {
+        this.add(Box.createRigidArea(new Dimension(0,15)));
+        captionComponentTabAddBook = new CaptionComponent("Добавление новой книги ", this.getWidth(), 30);
+        this.add(captionComponentTabAddBook);
+        infoComponentTabAddBook = new InfoComponent("", this.getWidth(), 30);
+        this.add(infoComponentTabAddBook);
+        this.add(Box.createRigidArea(new Dimension(0,10)));
+        bookNameComponentTabAddBook=new EditComponent("Название книги ", this.getWidth(), 30, 300);
+        this.add(bookNameComponentTabAddBook);
+        listAuthorsComponentTabAddBook = new ListAuthorsComponent("Авторы", this.getWidth(), 120, 300);
+        this.add(listAuthorsComponentTabAddBook);
+        publishedYearComponentTabAddBook=new EditComponent("Год публикации книги ", this.getWidth(), 30, 80);
+        this.add(publishedYearComponentTabAddBook);
+        quantityComponentTabAddBook=new EditComponent("Количество экземпляров ", this.getWidth(), 30, 40);
+        this.add(quantityComponentTabAddBook);
+        buttonComponentTabAddBook=new ButtonComponent("Добавить книгу", this.getWidth(), 50, 210, 195);
+        this.add(buttonComponentTabAddBook);
+        buttonComponentTabAddBook.getjButton().addActionListener(createAddBookButtonActionListener());
+        
+    }
+    
     private final ModelFacade bookFacade;
     
     public AddBookPanelComponent(int widthPanel, int heightPanel) {
